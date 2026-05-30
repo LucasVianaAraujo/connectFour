@@ -6,13 +6,15 @@ public class Main {
         System.out.printf("== CONNECT FOUR ==\n\nPressione 'Enter' para jogar: ");
         sc.nextLine();
 
-        int simboloJogador = simboloJogador();
+        // int simboloJogador = simboloJogador();
 
-        if (simboloJogador == 0) {
-            return;
-        }
+        // if (simboloJogador == 0) {
+        //  return;
+        //}
 
-        String nomeJogador = nomeJogador();
+        // String nomeJogador = nomeJogador();
+
+        connectFour();
     }
 
     static void regrasDoJogo() {
@@ -22,7 +24,40 @@ public class Main {
 
     static void connectFour() {
         Scanner sc = new Scanner(System.in);
-        // o jogo em si
+
+        String[][] tabuleiro = new String[6][7];
+
+        for (int i = 0; i < tabuleiro.length; i++) {
+            for (int j = 0; j < tabuleiro[i].length; j++) {
+                tabuleiro[i][j] = ".";
+            }
+        }
+
+        boolean existeEspaco = true;
+
+        while (existeEspaco) {
+            for (int i = 0; i < tabuleiro.length; i++) {
+                for (int j = 0; j < tabuleiro[i].length; j++) {
+                    System.out.print(tabuleiro[i][j] + " ");
+                }
+                System.out.println();
+            }
+
+            System.out.println("Escolha uma coluna (0 a 6):");
+            int marcar = sc.nextInt();
+
+            if (marcar < 0 || marcar >= tabuleiro.length) {
+                System.out.println("Coluna inválida");
+                return;
+            }
+
+            for (int i = tabuleiro.length - 1; i >= 0; i--) {
+                if (tabuleiro[i][marcar] == ".") {
+                    tabuleiro[i][marcar] = "X";
+                    break;
+                }
+            }
+        }
     }
 
     static int simboloJogador() {
