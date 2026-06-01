@@ -5,7 +5,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.printf("====== CONNECT FOUR ======\n\nPressione 'Enter' para jogar: ");
 
-        sc.nextLine();
+        String entrada = sc.nextLine();
+
+        if (!entrada.isEmpty()) {
+            System.out.println("Entrada inválida! Pressione apenas 'Enter' para continuar.");
+            return;
+        }
 
         String[] nomes = nomeJogador();
 
